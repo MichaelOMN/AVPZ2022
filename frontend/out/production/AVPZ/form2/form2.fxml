@@ -37,7 +37,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fitHeight="190.0" fitWidth="407.0" pickOnBounds="true">
+                  <ImageView fitHeight="190.0" fitWidth="406.0" pickOnBounds="true">
                      <image>
                         <Image url="@../res/images.png" />
                      </image>
@@ -71,7 +71,7 @@
             <TableView fx:id="table" maxWidth="-Infinity" prefHeight="411.0" prefWidth="549.0">
               <columns>
                 <TableColumn fx:id="nameColumn" prefWidth="492.0" text="Performers" />
-                <TableColumn fx:id="likeColumn" minWidth="0.0" prefWidth="50.0" text="C2" />
+                <TableColumn fx:id="likeColumn" minWidth="0.0" prefWidth="50.0" />
               </columns>
             </TableView>
          </children>
