@@ -1,0 +1,8 @@
+{
+    "tags": "23",
+    "description": "23",
+    "location": "23",
+    "size": 23,
+    "room_count": 23,
+    "price": 23
+}

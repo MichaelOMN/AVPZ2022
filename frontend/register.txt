@@ -1,0 +1,8 @@
+{
+     "tel": "0991111111",
+     "password": "1",
+     "pib": "Іванов Іван Іванович",
+     "description": "desc",
+     "location": "kh",
+     "is_remote_viewer": true
+}

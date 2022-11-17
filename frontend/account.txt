@@ -1,0 +1,4 @@
+{
+     "description": "Trying to unset is_remoter property",
+     "is_remote_viewer": false
+}
