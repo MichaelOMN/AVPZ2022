@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '004f2af45d3a4e161a7dd2d17fdae47f'
 app.config['SQLALCHEMY_DATABASE_URI'] = \
-    'sqlite://///home/michael/Documents/Projects/rentapp.db'
+    'sqlite://///home/Michael0832/mysite/rentapp.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db_init(app)
@@ -132,6 +132,22 @@ def get_all_users():
         result.append(user_data)
 
     return jsonify({'users': result})
+
+
+@app.route('/user')
+@token_required
+def get_itself(user):
+    user_data = {}
+    user_data['tel'] = user.tel
+    user_data['pib'] = user.pib
+    user_data['password'] = user.password
+    user_data['photo_file'] = user.photo_file
+    user_data['description'] = user.description
+    user_data['location'] = user.location
+    user_data['is_remote_viewer'] = user.is_remote_viewer
+
+    return jsonify(user_data)
+
 
 
 # @app.route('/advs', methods=['GET'])
