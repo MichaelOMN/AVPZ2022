@@ -319,6 +319,7 @@ def select_advertisements(current_user):
         ad_data['size'] = ad.size
         ad_data['room_count'] = ad.room_count
         ad_data['price'] = ad.price
+        ad_data['photo_file'] = ad.photo_file
         result.append(ad_data)
 
     return jsonify({"List of your ads": result})
