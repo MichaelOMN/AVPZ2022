@@ -1,7 +1,7 @@
 package registrationForm;
 
+import app.App;
 import com.google.gson.Gson;
-import form1.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,7 +69,7 @@ public class RegistrationController {
     @FXML
     private void goToLoginPage(ActionEvent e) {
         try {
-            Parent root = FXMLLoader.load(Main.class.getResource("/loginForm.fxml"));
+            Parent root = FXMLLoader.load(App.class.getResource("/loginForm.fxml"));
             stage.setTitle("Login");
             Scene scene = new Scene(root);
             scene.getStylesheets().add("style.css");

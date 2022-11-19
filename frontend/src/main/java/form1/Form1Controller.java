@@ -1,28 +1,28 @@
 package form1;
 
-import app.App;
+ import app.App;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import form3.EditController;
+ import form2.Form2Controller;
+ import form3.EditController;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
+ import javafx.scene.control.*;
+ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import server.REST;
+ import javafx.util.Callback;
+ import server.REST;
 import server.Util;
 
 import java.io.File;
@@ -53,11 +53,38 @@ public class Form1Controller {
         public int room_count;
         public double size;
         public String tags;
+        public String photo_file;
     }
 
 
     @FXML
     public void initialize() {
+        MenuItem mi1 = new MenuItem("Open editing form");
+        mi1.setOnAction((ActionEvent event) -> {
+            TableData item = table.getSelectionModel().getSelectedItem();
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(App.class.getResource("/form2.fxml"));
+                Form2Controller controller = new Form2Controller(item);
+                Form2Controller.stage = stage;
+                loader.setController(controller);
+
+                Parent root = loader.load();
+                stage.setTitle("Edit ad");
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add("style.css");
+                stage.setScene(scene);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        ContextMenu menu = new ContextMenu();
+        menu.getItems().add(mi1);
+        table.setContextMenu(menu);
+
+
+
         addressColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().location + ", " + c.getValue().description));
         tickColumn.setCellValueFactory(c -> new SimpleObjectProperty<>(new CheckBox("")));
 
@@ -103,7 +130,7 @@ public class Form1Controller {
     public void createAd() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("/editingForm.fxml"));
+            loader.setLocation(App.class.getResource("/editingForm.fxml"));
             EditController controller = new EditController(false, new TableData());
             EditController.stage = stage;
             loader.setController(controller);
@@ -121,10 +148,9 @@ public class Form1Controller {
 
     @FXML
     private void editAd() {
-
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("/editingForm.fxml"));
+            loader.setLocation(App.class.getResource("/editingForm.fxml"));
             EditController controller = new EditController(true, table.getSelectionModel().getSelectedItem());
             EditController.stage = stage;
             loader.setController(controller);
@@ -182,7 +208,7 @@ public class Form1Controller {
             }
             String path = file.getAbsolutePath();
             try {
-                REST.sendPic(preferences.get("token", ""), path);
+                REST.sendPicOfProfile(preferences.get("token", ""), path);
             } catch (Exception e) {
                 e.printStackTrace();
             }

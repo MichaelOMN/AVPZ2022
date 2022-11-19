@@ -1,6 +1,5 @@
 package app;
 
-import form1.Main;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +10,7 @@ import registrationForm.RegistrationController;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Main.class.getResource("/registrationForm.fxml"));
+        Parent root = FXMLLoader.load(App.class.getResource("/registrationForm.fxml"));
         stage.setTitle("Register");
         Scene scene = new Scene(root);
         scene.getStylesheets().add("style.css");

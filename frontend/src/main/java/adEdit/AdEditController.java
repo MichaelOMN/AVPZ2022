@@ -3,7 +3,6 @@ package adEdit;
 import app.App;
 import com.google.gson.Gson;
 import form1.Form1Controller;
-import form1.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -79,7 +78,7 @@ public class AdEditController {
         }
 
         try {
-            Parent root = FXMLLoader.load(Main.class.getResource("/form1.fxml"));
+            Parent root = FXMLLoader.load(App.class.getResource("/form1.fxml"));
             stage.setTitle("Form1");
             Scene scene = new Scene(root);
             scene.getStylesheets().add("style.css");

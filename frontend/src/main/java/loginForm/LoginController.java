@@ -3,7 +3,6 @@ package loginForm;
 import app.App;
 import com.google.gson.Gson;
 import form1.Form1Controller;
-import form1.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +16,6 @@ import javafx.stage.Stage;
 import server.REST;
 import server.Util;
 
-import java.util.Properties;
 import java.util.prefs.Preferences;
 
 
@@ -53,14 +51,8 @@ public class LoginController {
         Preferences preferences = Preferences.userNodeForPackage(App.class);
         preferences.put("token", token);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Token");
-        alert.setHeaderText("Your login token is:");
-        alert.setContentText(token);
-        alert.showAndWait();
-
         try {
-            Parent root = FXMLLoader.load(Main.class.getResource("/form1.fxml"));
+            Parent root = FXMLLoader.load(App.class.getResource("/form1.fxml"));
             stage.setTitle("Form1");
             Scene scene = new Scene(root);
             scene.getStylesheets().add("style.css");
