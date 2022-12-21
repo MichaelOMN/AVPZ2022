@@ -1,10 +1,12 @@
 package form1;
 
+ import adListForm.AdListController;
  import app.App;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+ import favourites.FavouritesController;
  import form2.Form2Controller;
  import form3.EditController;
 import javafx.beans.property.SimpleObjectProperty;
@@ -214,5 +216,33 @@ public class Form1Controller {
             }
         }
 
+    }
+
+    @FXML
+    public void openAllAds() {
+        try {
+            Parent root = FXMLLoader.load(App.class.getResource("/adList.fxml"));
+            stage.setTitle("All Ads");
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("style.css");
+            stage.setScene(scene);
+            AdListController.stage = stage;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void openFavourites() {
+        try {
+            Parent root = FXMLLoader.load(App.class.getResource("/favourites_list.fxml"));
+            stage.setTitle("Favourites");
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("style.css");
+            stage.setScene(scene);
+            FavouritesController.stage = stage;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

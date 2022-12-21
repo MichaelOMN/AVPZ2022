@@ -23,6 +23,13 @@ public class REST {
     public static final String ADV_ENDPOINT = "adv";
     public static final String REMOTERS_ENDPOINT = "remoters";
     public static final String PIC_ENDPOINT = "pic";
+    public static final String ALL_ADS = "advs_available";
+    public static final String COMPLAINT = "complaint";
+    public static final String COMMENT = "comment";
+    public static final String COMMENTS = "comments";
+    public static final String FAVOURITES = "favourites";
+    private static final String FAVOURITE = "favourite";
+
 
     private static String post(String endpoint, String body) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
@@ -228,13 +235,133 @@ public class REST {
         return response.body();
     }
 
+    public static String getAllAds() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MAIN_URL + ALL_ADS))
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+
+    public static String getComplaintsForAd(String id) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(MAIN_URL + ADV_ENDPOINT + "/" + id + "/" + "complaints"))
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+    public static String addComplaint(String token, String body) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MAIN_URL + COMPLAINT))
+                .headers("Content-Type", "application/json", "x-access-tokens", token)
+                .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+
+    public static String addComment(String token, String body) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MAIN_URL + COMMENT))
+                .headers("Content-Type", "application/json", "x-access-tokens", token)
+                .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+    public static String getCommentsOnAd(String id) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MAIN_URL + COMMENTS+ "/" + id))
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+
+    public static String deleteComment(String token, int id) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MAIN_URL + COMMENT + "/" + id))
+                .headers("Content-Type", "application/json", "x-access-tokens", token)
+                .DELETE()
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+    public static String getFavourites(String token) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MAIN_URL + FAVOURITES))
+                .headers("Content-Type", "application/json", "x-access-tokens", token)
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+
+    public static String addFavourite(String token, String body) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MAIN_URL + FAVOURITE))
+                .headers("Content-Type", "application/json", "x-access-tokens", token)
+                .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+    public static String deleteFavourite(String token, int id) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MAIN_URL + FAVOURITE + "/" + id))
+                .headers("Content-Type", "application/json", "x-access-tokens", token)
+                .DELETE()
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
+
+    public static String getAdById(String id) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MAIN_URL + ADVS_ENDPOINT+ "/" + id))
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
 
     public static void main(String[] args) throws Exception {
         //System.out.println(users());
 
 
         // System.out.println(register(Reader.readFile("register.txt")));
-        String token = login(Util.readFile("login.txt"));
+       /* String token = login(Util.readFile("login.txt"));
 
         JsonObject jsonObject = new Gson().fromJson(token, JsonObject.class);
         String tkn = String.valueOf(jsonObject.get("token"));
@@ -242,7 +369,7 @@ public class REST {
 
         //System.out.println(account(tkn, server.Reader.readFile("account.txt")));
         System.out.println(tkn);
-        System.out.println(remoters());
+        System.out.println(remoters());*/
         /*String jsonList = Util.getValueByKeyJSON("List of your ads");*/
 
         //System.out.println(saveAdv(tkn, Util.readFile("adv.txt")));
@@ -257,5 +384,9 @@ public class REST {
        Image image = new Image(new ByteArrayInputStream(pic.getBytes(StandardCharsets.UTF_8)));
         System.out.println(image.getRequestedWidth());*/
         //System.out.println(sendPic(tkn, "D:\\Java_Project\\AVPZ\\src\\main\\resources\\images2.png"));
+
+
+
+
     }
 }

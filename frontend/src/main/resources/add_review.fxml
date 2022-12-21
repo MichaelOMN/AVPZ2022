@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="226.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+      <HBox prefHeight="39.0" prefWidth="600.0">
+         <children>
+              <Label alignment="CENTER" prefHeight="35.0" prefWidth="292.0" text="Review Text" textAlignment="CENTER">
+                  <font>
+                      <Font size="24.0" />
+                  </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="317.0" text="Rate">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+              <TextArea fx:id="reviewText" prefHeight="100.0" prefWidth="265.0">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextArea>
+            <Slider fx:id="rateSlider" max="10.0" min="1.0" prefHeight="57.0" prefWidth="152.0">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Slider>
+            <Label fx:id="rateLabel">
+               <HBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+        <HBox prefHeight="72.0" prefWidth="600.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#cancel" prefHeight="37.0" prefWidth="90.0" text="Cancel">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="50.0" top="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#addReview" text="Add Review" textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="300.0" top="10.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</VBox>

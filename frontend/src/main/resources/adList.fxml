@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adListForm.AdListController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" onAction="#back" text="Back">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="table" prefHeight="400.0" prefWidth="646.0">
+        <columns>
+          <TableColumn fx:id="descColumn" prefWidth="242.0" text="Description" />
+          <TableColumn fx:id="locColumn" prefWidth="281.0" text="Location" />
+            <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="90.0" text="Price" />
+            <TableColumn fx:id="roomColumn" prefWidth="114.0" text="Rooms" />
+            <TableColumn fx:id="areaColumn" prefWidth="92.0" text="Area" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>

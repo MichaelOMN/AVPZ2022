@@ -58,8 +58,6 @@ public class Form2Controller {
 
     @FXML
     public void initialize() {
-
-
         Preferences preferences = Preferences.userNodeForPackage(App.class);
         String token = preferences.get("token", "");
 

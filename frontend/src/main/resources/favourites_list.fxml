@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="1055.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="favourites.FavouritesController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" onAction="#back" text="Back">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TableView fx:id="table" prefHeight="400.0" prefWidth="646.0">
+            <columns>
+                <TableColumn fx:id="descColumn" prefWidth="242.0" text="Description" />
+                <TableColumn fx:id="locColumn" prefWidth="365.0" text="Location" />
+                <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="167.0" text="Price" />
+                <TableColumn fx:id="roomColumn" prefWidth="166.0" text="Room Count" />
+                <TableColumn fx:id="areaColumn" prefWidth="114.0" text="Area" />
+            </columns>
+        </TableView>
+      <Button mnemonicParsing="false" onAction="#deleteFavourite" prefHeight="25.0" prefWidth="162.0" text="Delete Favourite">
+         <VBox.margin>
+            <Insets left="400.0" top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+    </children>
+</VBox>

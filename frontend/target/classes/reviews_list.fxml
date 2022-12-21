@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="251.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Back">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="textColumn" prefWidth="213.0" text="Text" />
+          <TableColumn fx:id="rateColumn" prefWidth="122.0" text="Rate" />
+            <TableColumn fx:id="dateColumn" prefWidth="341.0" text="Date" />
+            <TableColumn fx:id="userColumn" prefWidth="104.0" text="User" />
+        </columns>
+      </TableView>
+      <Button mnemonicParsing="false" onAction="#deleteReview" prefHeight="37.0" prefWidth="143.0" text="Delete Review">
+         <VBox.margin>
+            <Insets left="300.0" />
+         </VBox.margin>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</VBox>
