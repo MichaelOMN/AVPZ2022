@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+ import compare.CompareController;
  import favourites.FavouritesController;
  import form2.Form2Controller;
  import form3.EditController;
@@ -241,6 +242,20 @@ public class Form1Controller {
             scene.getStylesheets().add("style.css");
             stage.setScene(scene);
             FavouritesController.stage = stage;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void compare() {
+        try {
+            Parent root = FXMLLoader.load(App.class.getResource("/compare.fxml"));
+            stage.setTitle("Compare");
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("style.css");
+            stage.setScene(scene);
+            CompareController.stage = stage;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
